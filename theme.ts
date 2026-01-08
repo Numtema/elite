@@ -55,6 +55,22 @@ export const THEME = {
       forgotPassword: "Accès perdu ?",
       submitBtn: "Se connecter à la plateforme"
     },
+    signup: {
+      title: "Rejoindre l'Élite",
+      subtitle: "Commencez votre ascension vers la maîtrise de l'IA.",
+      loginPrompt: "Déjà membre ?",
+      loginLink: "Se connecter",
+      nameLabel: "Nom complet",
+      namePlaceholder: "Jean Dupont",
+      submitBtn: "Créer mon compte expert"
+    },
+    forgot: {
+      title: "Mot de passe perdu ?",
+      subtitle: "Pas d'inquiétude, nous allons vous aider à retrouver l'accès.",
+      description: "Entrez votre adresse e-mail pour recevoir les instructions de réinitialisation.",
+      submitBtn: "Envoyer le lien de récupération",
+      backToLogin: "Retour à la connexion"
+    },
     support: {
       headerTitle: "Centre d'Assistance",
       headerSub: "Expertise à votre service",

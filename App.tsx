@@ -35,11 +35,12 @@ import { SupportMenu } from './components/SupportMenu';
 type PresetKey = keyof typeof CONFIG.presets;
 
 // Animations
+// Fix: Cast ease to a tuple [number, number, number, number] to satisfy framer-motion Easing types
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true },
-  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }
 };
 
 const InfiniteMarquee = ({ theme, items }: { theme: any; items: string[] }) => (
