@@ -7,11 +7,12 @@ import { THEME } from '../theme';
 
 interface AuthViewProps {
   onBack: () => void;
+  onLogin: () => void;
 }
 
 type AuthMode = 'login' | 'signup' | 'forgot';
 
-export const AuthView: React.FC<AuthViewProps> = ({ onBack }) => {
+export const AuthView: React.FC<AuthViewProps> = ({ onBack, onLogin }) => {
   const [mode, setMode] = useState<AuthMode>('login');
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
@@ -19,6 +20,12 @@ export const AuthView: React.FC<AuthViewProps> = ({ onBack }) => {
   const tLogin = THEME.content.login;
   const tSignup = THEME.content.signup;
   const tForgot = THEME.content.forgot;
+
+  const handleLoginSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Ici on simule une connexion réussie
+    onLogin();
+  };
 
   return (
     <motion.div 
@@ -66,13 +73,14 @@ export const AuthView: React.FC<AuthViewProps> = ({ onBack }) => {
                   </p>
                 </div>
 
-                <form onSubmit={(e) => e.preventDefault()} className="space-y-6">
+                <form onSubmit={handleLoginSubmit} className="space-y-6">
                   <div className="space-y-2">
                     <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest pl-1">{tLogin.emailLabel}</label>
                     <div className="relative group">
                       <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400 group-focus-within:text-red-500" />
                       <input
                         type="email"
+                        required
                         placeholder={tLogin.emailPlaceholder}
                         className="w-full pl-12 pr-4 py-4 bg-slate-50 border-2 border-transparent rounded-2xl focus:border-red-500/20 focus:bg-white focus:ring-4 focus:ring-red-500/5 transition-all outline-none font-medium"
                       />
@@ -85,6 +93,7 @@ export const AuthView: React.FC<AuthViewProps> = ({ onBack }) => {
                       <Lock className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400 group-focus-within:text-red-500" />
                       <input
                         type={showPassword ? 'text' : 'password'}
+                        required
                         placeholder={tLogin.passwordPlaceholder}
                         className="w-full pl-12 pr-12 py-4 bg-slate-50 border-2 border-transparent rounded-2xl focus:border-red-500/20 focus:bg-white focus:ring-4 focus:ring-red-500/5 transition-all outline-none font-medium"
                       />
@@ -155,13 +164,14 @@ export const AuthView: React.FC<AuthViewProps> = ({ onBack }) => {
                   </p>
                 </div>
 
-                <form onSubmit={(e) => e.preventDefault()} className="space-y-6">
+                <form onSubmit={handleLoginSubmit} className="space-y-6">
                   <div className="space-y-2">
                     <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest pl-1">{tSignup.nameLabel}</label>
                     <div className="relative group">
                       <User className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400 group-focus-within:text-red-500" />
                       <input
                         type="text"
+                        required
                         placeholder={tSignup.namePlaceholder}
                         className="w-full pl-12 pr-4 py-4 bg-slate-50 border-2 border-transparent rounded-2xl focus:border-red-500/20 focus:bg-white focus:ring-4 focus:ring-red-500/5 transition-all outline-none font-medium"
                       />
@@ -174,6 +184,7 @@ export const AuthView: React.FC<AuthViewProps> = ({ onBack }) => {
                       <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400 group-focus-within:text-red-500" />
                       <input
                         type="email"
+                        required
                         placeholder={tLogin.emailPlaceholder}
                         className="w-full pl-12 pr-4 py-4 bg-slate-50 border-2 border-transparent rounded-2xl focus:border-red-500/20 focus:bg-white focus:ring-4 focus:ring-red-500/5 transition-all outline-none font-medium"
                       />
@@ -186,6 +197,7 @@ export const AuthView: React.FC<AuthViewProps> = ({ onBack }) => {
                       <Lock className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400 group-focus-within:text-red-500" />
                       <input
                         type={showPassword ? 'text' : 'password'}
+                        required
                         placeholder={tLogin.passwordPlaceholder}
                         className="w-full pl-12 pr-12 py-4 bg-slate-50 border-2 border-transparent rounded-2xl focus:border-red-500/20 focus:bg-white focus:ring-4 focus:ring-red-500/5 transition-all outline-none font-medium"
                       />
@@ -231,6 +243,7 @@ export const AuthView: React.FC<AuthViewProps> = ({ onBack }) => {
                       <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400 group-focus-within:text-red-500" />
                       <input
                         type="email"
+                        required
                         placeholder={tLogin.emailPlaceholder}
                         className="w-full pl-12 pr-4 py-4 bg-slate-50 border-2 border-transparent rounded-2xl focus:border-red-500/20 focus:bg-white focus:ring-4 focus:ring-red-500/5 transition-all outline-none font-medium"
                       />
